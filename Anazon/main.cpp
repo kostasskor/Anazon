@@ -113,7 +113,7 @@ void customerPlatform()
 		{
 			cout << "Enter Book Name: ";
 			string bookName;
-			cin >> bookName;
+			getline(cin >> ws, bookName);
 
 			//Book b;
 			//if(b.bookExists(bookName)) 
@@ -150,12 +150,11 @@ void customerRegister()
 	cout << "Please enter your email: ";
 	cin >> email;
 	cout << "Please enter your Street Address: ";
-	cin >> address;
+	getline(cin >> ws, address);
 
 	//Customer c;
 	//c.register(username, password, email, address);
 	cout << "Registration successful! Redirecting to Customer Platform" << endl;
-	customerPlatform();
 }
 
 bool customerLogin()
@@ -182,18 +181,17 @@ void sellerRegister()
 {
 	string shopName, password, email, address;
 	cout << "Please enter your Shop Name: ";
-	cin >> shopName;
+	getline(cin >> ws, shopName);
 	cout << "Please enter your desired password: ";
 	cin >> password;
 	cout << "Please enter your email: ";
 	cin >> email;
 	cout << "Please enter your Street Address: ";
-	cin >> address;
+	getline(cin >> ws, address);
 
 	//Shop s;
 	//s.register(shopName, password, email, address);
 	cout << "Registration successful! Redirecting to Shop Platform" << endl;
-	shopPlatform();
 }
 
 bool sellerLogin()
