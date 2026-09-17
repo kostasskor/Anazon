@@ -140,44 +140,22 @@ void customerPlatform()
 	}
 }
 
-void customerRegister()
+void customerRegisterPanel()
 {
-	string username, password, email, address;
+	string username, password, email;
 	cout << "Please enter your desired username: ";
 	cin >> username;
 	cout << "Please enter your desired password: ";
 	cin >> password;
 	cout << "Please enter your email: ";
 	cin >> email;
-	cout << "Please enter your Street Address: ";
-	getline(cin >> ws, address);
 
 	//Customer c;
 	//c.register(username, password, email, address);
 	cout << "Registration successful! Redirecting to Customer Platform" << endl;
 }
 
-bool customerLogin()
-{
-	string username, password;
-	cout << "Please enter your username: ";
-	cin >> username;
-	cout << "Please enter your password: ";
-	cin >> password;
-
-	//Customer c;
-	//int res = c.login(username, password);
-	int res = 0;
-	if (res == 0)
-	{
-		cout << "Login Unsuccessful. Please try again." << endl;
-		return false;
-	}
-	return true;
-
-}
-
-void sellerRegister()
+void sellerRegisterPanel()
 {
 	string shopName, password, email, address;
 	cout << "Please enter your Shop Name: ";
@@ -191,10 +169,11 @@ void sellerRegister()
 
 	//Shop s;
 	//s.register(shopName, password, email, address);
+
 	cout << "Registration successful! Redirecting to Shop Platform" << endl;
 }
 
-bool sellerLogin()
+bool loginPanel(int role)
 {
 	string username, password;
 	cout << "Please enter your username: ";
@@ -202,9 +181,8 @@ bool sellerLogin()
 	cout << "Please enter your password: ";
 	cin >> password;
 
-	//Shop s;
-	//s.login(username, password);
-	//int res = s.login(username, password);
+	//backend calls to check if the username and password are correct for the given role (1 for customer, 2 for seller)
+
 	int res = 0;
 	if (res == 0)
 	{
@@ -220,16 +198,15 @@ void welcome()
 	{
 		int option;
 		cout << "Welcome to Anazon!" << endl;
-		cout << "Pick an option:" << endl;
-		cout << "1. Customer" << endl;
-		cout << "2. Seller/Shop" << endl;
+		cout << "1. I am a Customer" << endl;
+		cout << "2. I am a Seller" << endl;
 		cout << "3. Exit" << endl;
 		cout << "Enter your option: ";
 		cin >> option;
 
 		if (option == 1)
 		{
-			cout << "You selected Customer." << endl;
+			cout << "Hello dear Customer!" << endl;
 			cout << "Please Log in or Register to continue." << endl;
 			cout << "1. Log in" << endl;
 			cout << "2. Register" << endl;
@@ -238,7 +215,8 @@ void welcome()
 
 			if (option == 1)
 			{
-				if (customerLogin())
+				int res = loginPanel(1);
+				if (res)
 				{
 					customerPlatform();
 				}
@@ -250,7 +228,7 @@ void welcome()
 			}
 			if (option == 2)
 			{
-				customerRegister();
+				customerRegisterPanel();
 			}
 		}
 		else if (option == 2)
@@ -264,7 +242,7 @@ void welcome()
 
 			if (option == 1)
 			{
-				if (sellerLogin())
+				if (loginPanel(2))
 				{
 					shopPlatform();
 				}
@@ -276,7 +254,7 @@ void welcome()
 			}
 			if (option == 2)
 			{
-				sellerRegister();
+				sellerRegisterPanel();
 			}
 		}
 		else if (option == 3)
