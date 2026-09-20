@@ -47,7 +47,6 @@ public:
 		Book* book = findBook(title);
 		if (book == nullptr)
 		{
-			cout << "Book not found." << endl;
 			return;
 		}
 		*book = newBook;

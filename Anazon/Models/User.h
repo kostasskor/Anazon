@@ -26,4 +26,5 @@ public:
 	{
 		return password;
 	}
+	virtual ~User() {}
 };
