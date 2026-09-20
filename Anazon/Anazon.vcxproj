@@ -126,7 +126,16 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="UI.h" />
+    <ClInclude Include="Models\Book_Stock.h" />
+    <ClInclude Include="Managers\BookManager.h" />
+    <ClInclude Include="Models\Customer.h" />
+    <ClInclude Include="Models\Book.h" />
+    <ClInclude Include="Models\Seller.h" />
+    <ClInclude Include="Managers\UserManager.h" />
+    <ClInclude Include="Models\User.h" />
+    <ClInclude Include="Managers\StockManager.h" />
+    <ClInclude Include="Models\Rating.h" />
+    <ClInclude Include="Views\UI.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

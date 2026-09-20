@@ -1,12 +1,11 @@
 #include <iostream>
 #include <string>
-#include "UI.h"
+#include "Views/UI.h"
 
 using namespace std;
 
 int main()
 {
 	welcome();
-
 	return 0;
 }

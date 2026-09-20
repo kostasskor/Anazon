@@ -1,6 +1,10 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include "..\Models\User.h"
+#include "..\Models\Customer.h"
+#include "..\Models\Seller.h"
+#include "..\Managers\UserManager.h"
 
 using namespace std;
 
@@ -151,8 +155,8 @@ void customerRegisterPanel()
 	cout << "Please enter your email: ";
 	cin >> email;
 
-	//Customer c;
-	//c.register(username, password, email, address);
+	Customer customer(username, email, password);
+	UserManager::Register(customer);
 	cout << "Registration successful! Redirecting to Customer Platform" << endl;
 }
 
@@ -168,8 +172,8 @@ void sellerRegisterPanel()
 	cout << "Please enter your Street Address: ";
 	getline(cin >> ws, address);
 
-	//Shop s;
-	//s.register(shopName, password, email, address);
+	Seller seller(shopName, email, password, address);
+	UserManager::Register(seller);
 
 	cout << "Registration successful! Redirecting to Shop Platform" << endl;
 }
@@ -182,10 +186,8 @@ bool loginPanel(int role)
 	cout << "Please enter your password: ";
 	cin >> password;
 
-	//backend calls to check if the username and password are correct for the given role (1 for customer, 2 for seller)
-
-	int res = 0;
-	if (res == 0)
+	bool res = UserManager::Login(username, password);
+	if (res == false)
 	{
 		cout << "Login Unsuccessful. Please try again." << endl;
 		return false;
