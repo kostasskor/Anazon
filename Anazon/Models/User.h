@@ -1,30 +1,28 @@
 #pragma once
 #include <string>
 
-using namespace std;
-
 class User
 {
 private:
-	string name;
-	string password;
-	string email;
+	std::string name;
+	std::string password;
+	std::string email;
 public:
-	User(string name, string email, string password)
+	User(const std::string& name, const std::string& email, const std::string& password)
 	{
 		this->name = name;
 		this->email = email;
 		this->password = password;
 	}
-	string getName()
+	const std::string& getName() const
 	{
 		return name;
 	}
-	string getEmail()
+	const std::string& getEmail() const
 	{
 		return email;
 	}
-	string getPassword()
+	const std::string& getPassword() const
 	{
 		return password;
 	}

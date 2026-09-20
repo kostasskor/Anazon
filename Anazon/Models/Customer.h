@@ -2,12 +2,18 @@
 #include <string>
 #include "User.h"
 
-using namespace std;
-
 class Customer : public User
 {
+private:
+	int customerId;
 public:
-	Customer(string name, string email, string password) : User(name, email, password)
+	Customer(const std::string& name, const std::string& email, const std::string& password, int customerId) 
+	: User(name, email, password)
 	{
+		this->customerId = customerId;
+	}
+	int getCustomerId() const
+	{
+		return customerId;
 	}
 };

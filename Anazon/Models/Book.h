@@ -1,40 +1,39 @@
 #pragma once
 #include <string>
 #include <vector>
-
-using namespace std;
+#include "Rating.h"
 
 class Book
 {
 private:
-	string title;
-	string author;
+	std::string title;
+	std::string author;
 	double price;
-	vector<string> reviews;
+	std::vector<Rating> reviews;
 public:
-	Book(string title, string author, double price)
+	Book(const std::string& title, const std::string& author, double price)
 	{
 		this->title = title;
 		this->author = author;
 		this->price = price;
 	}
-	string getTitle()
+	const std::string& getTitle() const
 	{
 		return title;
 	}
-	string getAuthor()
+	const std::string& getAuthor() const
 	{
 		return author;
 	}
-	double getPrice()
+	double getPrice() const
 	{
 		return price;
 	}
-	vector<string> getReviews()
+	const std::vector<Rating>& getReviews() const
 	{
 		return reviews;
 	}
-	vector<string> setReviews(vector<string> reviews)
+	void setReviews(const std::vector<Rating>& reviews)
 	{
 		this->reviews = reviews;
 	}

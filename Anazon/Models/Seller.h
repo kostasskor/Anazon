@@ -2,19 +2,19 @@
 #include <string>
 #include "User.h"
 
-using namespace std;
-
 class Seller : public User
 {
 private:
-	string address;
-
+	std::string address;
+	int sellerId;
 public:
-	Seller(string name, string email, string password, string address) : User(name, email, password)
+	Seller(std::string name, std::string email, std::string password, std::string address) 
+	: User(name, email, password)
 	{
 		this->address = address;
+		this->sellerId = sellerId;
 	}
-	string getAddress()
+	const std::string& getAddress() const
 	{
 		return address;
 	}

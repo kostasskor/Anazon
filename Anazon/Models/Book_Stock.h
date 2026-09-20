@@ -12,15 +12,15 @@ public:
 		this->book_id = book_id;
 		this->stock = stock;
 	}
-	int getSellerId()
+	int getSellerId() const
 	{
 		return seller_id;
 	}
-	int getBookId()
+	int getBookId() const
 	{
 		return book_id;
 	}
-	int getStock()
+	int getStock() const
 	{
 		return stock;
 	}

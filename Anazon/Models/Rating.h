@@ -1,16 +1,14 @@
 #pragma once
 #include <string>
 
-using namespace std;
-
 class Rating
 {
 private:
 	int score;
 	int user_id;
-	string comment;
+	std::string comment;
 public:
-	Rating(int score, string comment, int user_id)
+	Rating(int score, std::string comment, int user_id)
 	{
 		this->score = score;
 		this->comment = comment;
@@ -20,7 +18,7 @@ public:
 	{
 		return score;
 	}
-	string getComment()
+	std::string getComment()
 	{
 		return comment;
 	}
