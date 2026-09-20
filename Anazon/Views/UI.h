@@ -1,10 +1,10 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include "..\Models\User.h"
-#include "..\Models\Customer.h"
-#include "..\Models\Seller.h"
-#include "..\Managers\UserManager.h"
+#include "../Models/User.h"
+#include "../Models/Customer.h"
+#include "../Models/Seller.h"
+#include "../Managers/UserManager.h"
 
 using namespace std;
 

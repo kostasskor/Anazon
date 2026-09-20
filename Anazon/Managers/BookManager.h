@@ -2,14 +2,14 @@
 #include <string>
 #include <vector>
 #include <iostream>
-#include "..\Models\Book.h"
+#include "../Models/Book.h"
 
 using namespace std;
 
 class BookManager
 {
 private:
-	static vector<Book> books;
+	inline static vector<Book> books;
 public:
 	static void AddBook(Book book)
 	{

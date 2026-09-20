@@ -1,16 +1,16 @@
 #pragma once
 #include <string>
 #include <vector>
-#include "..\Models\User.h"
-#include "..\Models\Customer.h"
-#include "..\Models\Seller.h"
+#include "../Models/User.h"
+#include "../Models/Customer.h"
+#include "../Models/Seller.h"
 
 using namespace std;
 
 class UserManager
 {
 private:
-	static vector<User> users;
+	inline static vector<User*> users;
 public:
 	static bool Login(string email, string password)
 	{

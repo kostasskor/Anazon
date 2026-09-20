@@ -2,23 +2,23 @@
 class Book_Stock
 {
 private:
-	int seller_id;
-	int book_id;
+	int sellerId;
+	int bookId;
 	int stock;
 public:
-	Book_Stock(int seller_id, int book_id, int stock)
+	Book_Stock(int sellerId, int bookId, int stock)
 	{
-		this->seller_id = seller_id;
-		this->book_id = book_id;
+		this->sellerId = sellerId;
+		this->bookId = bookId;
 		this->stock = stock;
-	}
+	}	
 	int getSellerId() const
 	{
-		return seller_id;
+		return sellerId;
 	}
 	int getBookId() const
 	{
-		return book_id;
+		return bookId;
 	}
 	int getStock() const
 	{

@@ -2,14 +2,14 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "..\Models\Book_Stock.h"
+#include "../Models/Book_Stock.h"
 
 using namespace std;
 
 class StockManager
 {
 private:
-	static vector<Book_Stock> stocks;
+	inline static vector<Book_Stock> stocks;
 public:
 	static void buyBook(int seller_id, int book_id, int quantity)
 	{
