@@ -10,12 +10,12 @@
 using namespace std;
 
 void showMenu(UserManager& userManager, BookManager& bookManager);
-void customerPlatform(BookManager& bookManager);
-void shopPlatform(BookManager& bookManager);
+void customerPlatform(BookManager& bookManager, User* user);
+void shopPlatform(BookManager& bookManager, User* user);
 void bookViewer(BookManager& bookManager);
 void customerRegisterPanel(UserManager& userManager, BookManager& bookManager);
 void sellerRegisterPanel(UserManager& userManager, BookManager& bookManager);
-bool loginPanel(UserManager& userManager);
+User* loginPanel(UserManager& userManager);
 
 void bookViewer(BookManager& bookManager)
 {
@@ -64,7 +64,7 @@ void bookViewer(BookManager& bookManager)
 	}
 }
 
-void shopPlatform(BookManager& bookManager)
+void shopPlatform(BookManager& bookManager, User* user)
 {
 	while (true)
 	{
@@ -107,7 +107,7 @@ void shopPlatform(BookManager& bookManager)
 	}
 }
 
-void customerPlatform(BookManager& bookManager)
+void customerPlatform(BookManager& bookManager, User* user)
 {
 	while (true)
 	{
@@ -151,6 +151,7 @@ void customerPlatform(BookManager& bookManager)
 
 void customerRegisterPanel(UserManager& userManager, BookManager& bookManager)
 {
+	int customerId = 1; // This should be generated or retrieved from a database in a real application
 	string username, password, email;
 	cout << "Please enter your desired username: ";
 	cin >> username;
@@ -159,11 +160,12 @@ void customerRegisterPanel(UserManager& userManager, BookManager& bookManager)
 	cout << "Please enter your email: ";
 	cin >> email;
 
-	bool ok = userManager.Register(new Customer(username, email, password, 0));
+	User* newUser = new Customer(username, email, password, customerId);
+	bool ok = userManager.Register(newUser);
 	if (ok)
 	{
 		cout << "Registration successful! Redirecting to Customer Platform" << endl;
-		customerPlatform(bookManager);
+		customerPlatform(bookManager, newUser);
 	}
 	else
 	{
@@ -182,12 +184,14 @@ void sellerRegisterPanel(UserManager& userManager, BookManager& bookManager)
 	cin >> email;
 	cout << "Please enter your Street Address: ";
 	getline(cin >> ws, address);
+	int sellerId = 1; // This should be generated or retrieved from a database in a real application
 
-	bool ok = userManager.Register(new Seller(shopName, email, password, address));
-	if (ok) 
+	User* newUser = new Seller(shopName, email, password, address, sellerId);
+	bool ok = userManager.Register(newUser);
+	if (ok)
 	{
 		cout << "Registration successful! Redirecting to Shop Platform" << endl;
-		shopPlatform(bookManager);
+		shopPlatform(bookManager, newUser);
 	}
 	else
 	{
@@ -195,7 +199,7 @@ void sellerRegisterPanel(UserManager& userManager, BookManager& bookManager)
 	}
 }
 
-bool loginPanel(UserManager& userManager)
+User* loginPanel(UserManager& userManager)
 {
 	string email, password;
 	cout << "Please enter your email: ";
@@ -203,13 +207,13 @@ bool loginPanel(UserManager& userManager)
 	cout << "Please enter your password: ";
 	cin >> password;
 
-	bool ok = userManager.Login(email, password);
-	if (ok == false)
+	User* user = userManager.Login(email, password);
+	if (user == nullptr)
 	{
 		cout << "Login Unsuccessful. Please try again." << endl;
-		return false;
+		return nullptr;
 	}
-	return true;
+	return user;
 }
 
 void showMenu(UserManager& userManager, BookManager& bookManager)
@@ -235,10 +239,10 @@ void showMenu(UserManager& userManager, BookManager& bookManager)
 
 			if (option == 1)
 			{
-				bool ok = loginPanel(userManager);
-				if (ok)
+				User* user = loginPanel(userManager);
+				if (user != nullptr)
 				{
-					customerPlatform(bookManager);
+					customerPlatform(bookManager, user);
 				}
 				else
 				{
@@ -262,10 +266,10 @@ void showMenu(UserManager& userManager, BookManager& bookManager)
 
 			if (option == 1)
 			{
-				bool ok = loginPanel(userManager);
-				if (ok)
+				User* user = loginPanel(userManager);
+				if (user != nullptr)
 				{
-					shopPlatform(bookManager);
+					shopPlatform(bookManager, user);
 				}
 				else
 				{

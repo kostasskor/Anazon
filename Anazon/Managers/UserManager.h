@@ -12,16 +12,16 @@ class UserManager
 private:
 	vector<User*> users;
 public:
-	bool Login(string email, string password)
+	User* Login(string email, string password)
 	{
 		for (int i = 0; i < users.size(); i++)
 		{
 			if (users[i]->getEmail() == email && users[i]->getPassword() == password)
 			{
-				return true;
+				return users[i];
 			}
 		}
-		return false;
+		return nullptr;
 	}
 	bool Register(User* user) 
 	{

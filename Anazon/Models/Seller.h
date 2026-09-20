@@ -8,7 +8,7 @@ private:
 	std::string address;
 	int sellerId;
 public:
-	Seller(std::string name, std::string email, std::string password, std::string address) 
+	Seller(std::string name, std::string email, std::string password, std::string address, int sellerId) 
 	: User(name, email, password)
 	{
 		this->address = address;
@@ -17,5 +17,9 @@ public:
 	const std::string& getAddress() const
 	{
 		return address;
+	}
+	const int getSellerId() const
+	{
+		return sellerId;
 	}
 };

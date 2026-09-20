@@ -32,4 +32,18 @@ public:
 		}
 		cout << "Book not found in stock." << endl;
 	}
+	void addStock(int seller_id, int book_id, int quantity)
+	{
+		for (int i = 0; i < stocks.size(); i++)
+		{
+			if (stocks[i].getSellerId() == seller_id && stocks[i].getBookId() == book_id)
+			{
+				stocks[i] = Book_Stock(seller_id, book_id, stocks[i].getStock() + quantity);
+				cout << "Stock updated." << endl;
+				return;
+			}
+		}
+		stocks.push_back(Book_Stock(seller_id, book_id, quantity));
+		cout << "New stock added." << endl;
+	}
 };
