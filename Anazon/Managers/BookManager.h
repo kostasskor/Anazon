@@ -9,13 +9,13 @@ using namespace std;
 class BookManager
 {
 private:
-	vector<Book> books;
+	static vector<Book> books;
 public:
-	void AddBook(Book book)
+	static void AddBook(Book book)
 	{
 		books.push_back(book);
 	}
-	void RemoveBook(string title)
+	static void RemoveBook(string title)
 	{
 		for (int i = 0; i < books.size(); i++)
 		{
@@ -28,7 +28,7 @@ public:
 		}
 		cout << "Book not found." << endl;
 	}
-	Book* findBook(string title)
+	static Book* findBook(string title)
 	{
 		for (int i = 0; i < books.size(); i++)
 		{
@@ -41,7 +41,7 @@ public:
 		cout << "Book not found." << endl;
 		return nullptr;
 	}
-	void updateBook(string title, Book newBook)
+	static void updateBook(string title, Book newBook)
 	{
 		Book* book = findBook(title);
 		if (book == nullptr)
@@ -52,7 +52,7 @@ public:
 		*book = newBook;
 		cout << "Book updated." << endl;
 	}
-	void rateBook(string title, string review)
+	static void rateBook(string title, string review)
 	{
 		Book* book = findBook(title);
 		if (book == nullptr)
