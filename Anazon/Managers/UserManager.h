@@ -10,41 +10,29 @@ using namespace std;
 class UserManager
 {
 private:
-	inline static vector<User*> users;
+	vector<User*> users;
 public:
-	static bool Login(string email, string password)
+	bool Login(string email, string password)
 	{
 		for (int i = 0; i < users.size(); i++)
 		{
-			if (users[i].getEmail() == email && users[i].getPassword() == password)
+			if (users[i]->getEmail() == email && users[i]->getPassword() == password)
 			{
 				return true;
 			}
 		}
 		return false;
 	}
-	static bool Register(Customer customer) 
+	bool Register(User* user) 
 	{
 		for (int i = 0; i < users.size(); i++)
 		{
-			if (users[i].getEmail() == customer.getEmail())
+			if (users[i]->getEmail() == user->getEmail())
 			{
 				return false;
 			}
 		}
-		users.push_back(customer);
-		return true;
-	}
-	static bool Register(Seller seller) 
-	{
-		for (int i = 0; i < users.size(); i++)
-		{
-			if (users[i].getEmail() == seller.getEmail())
-			{
-				return false;
-			}
-		}
-		users.push_back(seller);
+		users.push_back(user);
 		return true;
 	}
 };

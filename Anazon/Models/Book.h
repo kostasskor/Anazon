@@ -33,8 +33,8 @@ public:
 	{
 		return reviews;
 	}
-	void setReviews(const std::vector<Rating>& reviews)
+	void addReview(const Rating& review)
 	{
-		this->reviews = reviews;
+		reviews.push_back(review);
 	}
 };

@@ -5,15 +5,19 @@
 #include "../Models/Customer.h"
 #include "../Models/Seller.h"
 #include "../Managers/UserManager.h"
+#include "../Managers/BookManager.h"
 
 using namespace std;
 
-void welcome();
-void customerPlatform();
-void shopPlatform();
-void bookViewer();
+void showMenu(UserManager& userManager, BookManager& bookManager);
+void customerPlatform(BookManager& bookManager);
+void shopPlatform(BookManager& bookManager);
+void bookViewer(BookManager& bookManager);
+void customerRegisterPanel(UserManager& userManager, BookManager& bookManager);
+void sellerRegisterPanel(UserManager& userManager, BookManager& bookManager);
+bool loginPanel(UserManager& userManager);
 
-void bookViewer()
+void bookViewer(BookManager& bookManager)
 {
 	while (true)
 	{
@@ -60,7 +64,7 @@ void bookViewer()
 	}
 }
 
-void shopPlatform()
+void shopPlatform(BookManager& bookManager)
 {
 	while (true)
 	{
@@ -103,7 +107,7 @@ void shopPlatform()
 	}
 }
 
-void customerPlatform()
+void customerPlatform(BookManager& bookManager)
 {
 	while (true)
 	{
@@ -145,7 +149,7 @@ void customerPlatform()
 	}
 }
 
-void customerRegisterPanel()
+void customerRegisterPanel(UserManager& userManager, BookManager& bookManager)
 {
 	string username, password, email;
 	cout << "Please enter your desired username: ";
@@ -155,12 +159,19 @@ void customerRegisterPanel()
 	cout << "Please enter your email: ";
 	cin >> email;
 
-	Customer customer(username, email, password);
-	UserManager::Register(customer);
-	cout << "Registration successful! Redirecting to Customer Platform" << endl;
+	bool ok = userManager.Register(new Customer(username, email, password, 0));
+	if (ok)
+	{
+		cout << "Registration successful! Redirecting to Customer Platform" << endl;
+		customerPlatform(bookManager);
+	}
+	else
+	{
+		cout << "Registration failed. Email already exists. Please try again." << endl;
+	}
 }
 
-void sellerRegisterPanel()
+void sellerRegisterPanel(UserManager& userManager, BookManager& bookManager)
 {
 	string shopName, password, email, address;
 	cout << "Please enter your Shop Name: ";
@@ -172,22 +183,28 @@ void sellerRegisterPanel()
 	cout << "Please enter your Street Address: ";
 	getline(cin >> ws, address);
 
-	Seller seller(shopName, email, password, address);
-	UserManager::Register(seller);
-
-	cout << "Registration successful! Redirecting to Shop Platform" << endl;
+	bool ok = userManager.Register(new Seller(shopName, email, password, address));
+	if (ok) 
+	{
+		cout << "Registration successful! Redirecting to Shop Platform" << endl;
+		shopPlatform(bookManager);
+	}
+	else
+	{
+		cout << "Registration failed. Email already exists. Please try again." << endl;
+	}
 }
 
-bool loginPanel(int role)
+bool loginPanel(UserManager& userManager)
 {
-	string username, password;
-	cout << "Please enter your username: ";
-	cin >> username;
+	string email, password;
+	cout << "Please enter your email: ";
+	cin >> email;
 	cout << "Please enter your password: ";
 	cin >> password;
 
-	bool res = UserManager::Login(username, password);
-	if (res == false)
+	bool ok = userManager.Login(email, password);
+	if (ok == false)
 	{
 		cout << "Login Unsuccessful. Please try again." << endl;
 		return false;
@@ -195,7 +212,7 @@ bool loginPanel(int role)
 	return true;
 }
 
-void welcome()
+void showMenu(UserManager& userManager, BookManager& bookManager)
 {
 	while (true)
 	{
@@ -218,10 +235,10 @@ void welcome()
 
 			if (option == 1)
 			{
-				int res = loginPanel(1);
-				if (res)
+				bool ok = loginPanel(userManager);
+				if (ok)
 				{
-					customerPlatform();
+					customerPlatform(bookManager);
 				}
 				else
 				{
@@ -231,7 +248,7 @@ void welcome()
 			}
 			if (option == 2)
 			{
-				customerRegisterPanel();
+				customerRegisterPanel(userManager, bookManager);
 			}
 		}
 		else if (option == 2)
@@ -245,9 +262,10 @@ void welcome()
 
 			if (option == 1)
 			{
-				if (loginPanel(2))
+				bool ok = loginPanel(userManager);
+				if (ok)
 				{
-					shopPlatform();
+					shopPlatform(bookManager);
 				}
 				else
 				{
@@ -257,13 +275,13 @@ void welcome()
 			}
 			if (option == 2)
 			{
-				sellerRegisterPanel();
+				sellerRegisterPanel(userManager, bookManager);
 			}
 		}
 		else if (option == 3)
 		{
 			cout << "Exiting Anazon. Goodbye!" << endl;
-			exit(0);
+			return;
 		}
 		else
 		{

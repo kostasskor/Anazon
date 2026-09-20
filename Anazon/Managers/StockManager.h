@@ -9,9 +9,9 @@ using namespace std;
 class StockManager
 {
 private:
-	inline static vector<Book_Stock> stocks;
+	vector<Book_Stock> stocks;
 public:
-	static void buyBook(int seller_id, int book_id, int quantity)
+	void buyBook(int seller_id, int book_id, int quantity)
 	{
 		for (int i = 0; i < stocks.size(); i++)
 		{

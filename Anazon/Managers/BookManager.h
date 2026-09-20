@@ -4,18 +4,19 @@
 #include <iostream>
 #include "../Models/Book.h"
 
+
 using namespace std;
 
 class BookManager
 {
 private:
-	inline static vector<Book> books;
+	vector<Book> books;
 public:
-	static void AddBook(Book book)
+	void AddBook(Book book)
 	{
 		books.push_back(book);
 	}
-	static void RemoveBook(string title)
+	void RemoveBook(string title)
 	{
 		for (int i = 0; i < books.size(); i++)
 		{
@@ -28,7 +29,7 @@ public:
 		}
 		cout << "Book not found." << endl;
 	}
-	static Book* findBook(string title)
+	Book* findBook(string title)
 	{
 		for (int i = 0; i < books.size(); i++)
 		{
@@ -41,7 +42,7 @@ public:
 		cout << "Book not found." << endl;
 		return nullptr;
 	}
-	static void updateBook(string title, Book newBook)
+	void updateBook(string title, Book newBook)
 	{
 		Book* book = findBook(title);
 		if (book == nullptr)
@@ -52,7 +53,7 @@ public:
 		*book = newBook;
 		cout << "Book updated." << endl;
 	}
-	static void rateBook(string title, string review)
+	void rateBook(string title, Rating rating)
 	{
 		Book* book = findBook(title);
 		if (book == nullptr)
@@ -60,9 +61,7 @@ public:
 			cout << "Book not found." << endl;
 			return;
 		}
-		vector<string> reviews = book->getReviews();
-		reviews.push_back(review);
-		book->setReviews(reviews);
+		book->addReview(rating);
 		cout << "Review added." << endl;
 	}
 };
