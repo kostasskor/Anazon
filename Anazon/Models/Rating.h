@@ -8,21 +8,21 @@ private:
 	int user_id;
 	std::string comment;
 public:
-	Rating(int score, std::string comment, int user_id)
+	Rating(int score, const std::string& comment, int user_id)
 	{
 		this->score = score;
 		this->comment = comment;
 		this->user_id = user_id;
 	}
-	int getScore()
+	const int getScore() const
 	{
 		return score;
 	}
-	std::string getComment()
+	const std::string& getComment() const
 	{
 		return comment;
 	}
-	int getUserId()
+	const int getUserId() const
 	{
 		return user_id;
 	}
