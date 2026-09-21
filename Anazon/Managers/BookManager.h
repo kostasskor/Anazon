@@ -4,45 +4,42 @@
 #include <iostream>
 #include "../Models/Book.h"
 
-
-using namespace std;
-
 class BookManager
 {
 private:
-	vector<Book> books;
+	std::vector<Book> books;
 public:
-	void AddBook(Book book)
+	void AddBook(const Book& book)
 	{
 		books.push_back(book);
 	}
-	void RemoveBook(string title)
+	void RemoveBook(const std::string& title)
 	{
 		for (int i = 0; i < books.size(); i++)
 		{
 			if (books[i].getTitle() == title)
 			{
 				books.erase(books.begin() + i);
-				cout << "Book removed." << endl;
+				std::cout << "Book removed." << std::endl;
 				return;
 			}
 		}
-		cout << "Book not found." << endl;
+		std::cout << "Book not found." << std::endl;
 	}
-	Book* findBook(string title)
+	Book* findBook(const std::string& title)
 	{
 		for (int i = 0; i < books.size(); i++)
 		{
 			if (books[i].getTitle() == title)
 			{
-				cout << "Book found: " << books[i].getTitle() << " by " << books[i].getAuthor() << endl;
+				std::cout << "Book found: " << books[i].getTitle() << " by " << books[i].getAuthor() << std::endl;
 				return &books[i];
 			}
 		}
-		cout << "Book not found." << endl;
+		std::cout << "Book not found." << std::endl;
 		return nullptr;
 	}
-	void updateBook(string title, Book newBook)
+	void updateBook(const std::string& title, const Book& newBook)
 	{
 		Book* book = findBook(title);
 		if (book == nullptr)
@@ -50,17 +47,16 @@ public:
 			return;
 		}
 		*book = newBook;
-		cout << "Book updated." << endl;
+		std::cout << "Book updated." << std::endl;
 	}
-	void rateBook(string title, Rating rating)
+	void rateBook(const std::string& title, const Rating& rating)
 	{
 		Book* book = findBook(title);
 		if (book == nullptr)
 		{
-			cout << "Book not found." << endl;
 			return;
 		}
 		book->addReview(rating);
-		cout << "Review added." << endl;
+		std::cout << "Review added." << std::endl;
 	}
 };

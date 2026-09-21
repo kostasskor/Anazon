@@ -125,6 +125,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Views\UI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Models\Book_Stock.h" />

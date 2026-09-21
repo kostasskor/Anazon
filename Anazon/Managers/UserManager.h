@@ -5,14 +5,12 @@
 #include "../Models/Customer.h"
 #include "../Models/Seller.h"
 
-using namespace std;
-
 class UserManager
 {
 private:
 	vector<User*> users;
 public:
-	User* Login(string email, string password)
+	User* Login(std::string& email, std::string& password)
 	{
 		for (int i = 0; i < users.size(); i++)
 		{
