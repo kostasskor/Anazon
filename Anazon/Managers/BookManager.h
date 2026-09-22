@@ -30,33 +30,23 @@ public:
 	{
 		for (int i = 0; i < books.size(); i++)
 		{
-			if (books[i].getTitle() == title)
-			{
-				std::cout << "Book found: " << books[i].getTitle() << " by " << books[i].getAuthor() << std::endl;
+			if (books[i].getTitle() == title) 
 				return &books[i];
-			}
 		}
-		std::cout << "Book not found." << std::endl;
 		return nullptr;
 	}
 	void updateBook(const std::string& title, const Book& newBook)
 	{
 		Book* book = findBook(title);
 		if (book == nullptr)
-		{
 			return;
-		}
 		*book = newBook;
-		std::cout << "Book updated." << std::endl;
 	}
 	void rateBook(const std::string& title, const Rating& rating)
 	{
 		Book* book = findBook(title);
 		if (book == nullptr)
-		{
 			return;
-		}
 		book->addReview(rating);
-		std::cout << "Review added." << std::endl;
 	}
 };

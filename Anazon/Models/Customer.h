@@ -4,16 +4,17 @@
 
 class Customer : public User
 {
-private:
-	int customerId;
 public:
-	Customer(const std::string& name, const std::string& email, const std::string& password, int customerId) 
+	Customer(const std::string& name, const std::string& email, const std::string& password)
 	: User(name, email, password)
 	{
-		this->customerId = customerId;
+	}
+	std::string getRole() const override
+	{
+		return "Customer";
 	}
 	int getCustomerId() const
 	{
-		return customerId;
+		return getId();
 	}
 };

@@ -7,6 +7,7 @@ private:
 	std::string name;
 	std::string password;
 	std::string email;
+	int id = 0;
 public:
 	User(const std::string& name, const std::string& email, const std::string& password)
 	{
@@ -14,6 +15,7 @@ public:
 		this->email = email;
 		this->password = password;
 	}
+	virtual std::string getRole() const = 0;
 	const std::string& getName() const
 	{
 		return name;
@@ -26,5 +28,15 @@ public:
 	{
 		return password;
 	}
+	int getId() const
+	{
+		return id;
+	}
 	virtual ~User() {}
+private:
+	friend class UserManager;
+	void setId(int newId)
+	{
+		id = newId;
+	}
 };

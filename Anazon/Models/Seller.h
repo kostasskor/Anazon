@@ -6,13 +6,15 @@ class Seller : public User
 {
 private:
 	std::string address;
-	int sellerId;
 public:
-	Seller(const std::string& name, const std::string& email, const std::string& password, const std::string& address, int sellerId) 
+	Seller(const std::string& name, const std::string& email, const std::string& password, const std::string& address)
 	: User(name, email, password)
 	{
 		this->address = address;
-		this->sellerId = sellerId;
+	}
+	std::string getRole() const override
+	{
+		return "Seller";
 	}
 	const std::string& getAddress() const
 	{
@@ -20,6 +22,6 @@ public:
 	}
 	int getSellerId() const
 	{
-		return sellerId;
+		return getId();
 	}
 };

@@ -14,7 +14,11 @@ public:
 		this->comment = comment;
 		this->user_id = user_id;
 	}
-	const int getScore() const
+	static bool isValidScore(int score)
+	{
+		return score >= 1 && score <= 5;
+	}
+	int getScore() const
 	{
 		return score;
 	}
@@ -22,7 +26,7 @@ public:
 	{
 		return comment;
 	}
-	const int getUserId() const
+	int getUserId() const
 	{
 		return user_id;
 	}
