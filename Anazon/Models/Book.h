@@ -43,11 +43,11 @@ public:
 	{
 		return price * quantity;
 	}
-	int getReviewCount() const
+	size_t getReviewCount() const
 	{
 		return reviews.size();
 	}
-	double getAverageRating() const
+	uint64_t getAverageRating() const
 	{
 		if (reviews.empty()) 
 		{
@@ -55,7 +55,7 @@ public:
 		}
 
 		int total = 0;
-		for (int i = 0; i < reviews.size(); i++) 
+		for (size_t i = 0; i < reviews.size(); i++) 
 		{
 			total += reviews[i].getScore();
 		}

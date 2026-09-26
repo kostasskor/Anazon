@@ -5,9 +5,7 @@
 #include <string>
 #include <vector>
 
-
 using namespace std;
-
 
 static void bookViewer(Book* book, StockManager& stockManager, UserManager& userManager, User* user)
 {
@@ -35,8 +33,7 @@ static void bookViewer(Book* book, StockManager& stockManager, UserManager& user
 			}
 			else
 			{
-				cout << "Rating: " << book->getAverageRating()
-					<< " from " << book->getReviewCount() << " review(s)" << endl;
+				cout << "Rating: " << book->getAverageRating() << " from " << book->getReviewCount() << " review(s)" << endl;
 			}
 		}
 		else if (option == 2)

@@ -15,5 +15,7 @@
     <ClInclude Include="Managers\StockManager.h" />
     <ClInclude Include="Models\Book_Stock.h" />
     <ClInclude Include="Models\Rating.h" />
+    <ClInclude Include="Repositories\IBookRepository.h" />
+    <ClInclude Include="Repositories\RamBookRepository.h" />
   </ItemGroup>
 </Project>
