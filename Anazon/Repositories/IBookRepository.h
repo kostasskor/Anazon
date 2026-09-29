@@ -5,10 +5,10 @@ class IBookRepository
 {
 public:
 	virtual ~IBookRepository() = default;
-	virtual void saveBook(const Book& book);
-	virtual bool removeByTitle(const std::string& title);
-	virtual Book* findBookByTitle(const std::string& title);
-	virtual Book* findBookById(int id);
-	virtual bool UpdateBook(const std::string& title, const Book& book);
-	virtual void addRating(const std::string& title, const Rating& rating);
+	virtual void addBook(const Book& book) = 0;
+	virtual bool removeByTitle(const std::string& title) = 0;
+	virtual Book* findBookByTitle(const std::string& title) = 0;
+	virtual Book* findBookById(int id) = 0;
+	virtual bool updateBook(const std::string& title, const Book& book) = 0;
+	virtual bool rateBook(const std::string& title, const Rating& rating) = 0;
 };

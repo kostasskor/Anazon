@@ -15,11 +15,11 @@ public:
 	{
 		this->bookRepo = bookRepo;
 	}
-	void AddBook(const Book& book)
+	void addBook(const Book& book)
 	{
-		bookRepo->saveBook(book);
+		bookRepo->addBook(book);
 	}
-	void RemoveBook(const std::string& title)
+	void removeBook(const std::string& title)
 	{
 		bookRepo->removeByTitle(title);
 	}
@@ -29,10 +29,10 @@ public:
 	}
 	bool updateBook(const std::string& title, const Book& newBook)
 	{
-		bookRepo->UpdateBook(title, newBook);
+		return bookRepo->updateBook(title, newBook);
 	}
 	void rateBook(const std::string& title, const Rating& rating)
 	{
-		bookRepo->addRating(title, rating);
+		bookRepo->rateBook(title, rating);
 	}
 };

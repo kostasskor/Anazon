@@ -17,5 +17,6 @@
     <ClInclude Include="Models\Rating.h" />
     <ClInclude Include="Repositories\IBookRepository.h" />
     <ClInclude Include="Repositories\RamBookRepository.h" />
+    <ClInclude Include="Repositories\CsvBookRepository.h" />
   </ItemGroup>
 </Project>

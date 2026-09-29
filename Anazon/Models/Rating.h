@@ -5,14 +5,14 @@ class Rating
 {
 private:
 	int score;
-	int user_id;
+	int userId;
 	std::string comment;
 public:
 	Rating(int score, const std::string& comment, int user_id)
 	{
 		this->score = score;
 		this->comment = comment;
-		this->user_id = user_id;
+		this->userId = user_id;
 	}
 	static bool isValidScore(int score)
 	{
@@ -28,6 +28,6 @@ public:
 	}
 	int getUserId() const
 	{
-		return user_id;
+		return userId;
 	}
 };

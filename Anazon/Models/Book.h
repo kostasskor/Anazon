@@ -47,7 +47,7 @@ public:
 	{
 		return reviews.size();
 	}
-	uint64_t getAverageRating() const
+	float getAverageRating() const
 	{
 		if (reviews.empty()) 
 		{
@@ -59,7 +59,7 @@ public:
 		{
 			total += reviews[i].getScore();
 		}
-		return total / reviews.size();
+		return (float)total / reviews.size();
 	}
 	void addReview(const Rating& review)
 	{
