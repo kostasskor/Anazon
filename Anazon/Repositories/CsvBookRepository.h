@@ -17,7 +17,7 @@ private:
 	std::string serializeBook(const Book& book)
 	{
 		std::stringstream line;
-		line << book.getBookId() << "," << book.getTitle() << "," << book.getAuthor() << "," << book.getPrice();
+		line << book.getTitle() << "," << book.getAuthor() << "," << book.getPrice() << "," << book.getBookId();
 
 		const std::vector<Rating>& reviews = book.getReviews();
 		for (int i = 0; i < reviews.size(); i++)
@@ -29,7 +29,7 @@ private:
 	Book deserializeBook(const std::string& line)
 	{
 		std::stringstream ss(line);
-		std::string id, title, author, price;
+		std::string title, author, price, id;
 
 		std::getline(ss, title, ',');
 		std::getline(ss, author, ',');

@@ -12,19 +12,6 @@ using namespace std;
 int main()
 {
 	CsvBookRepository bookRepo;
-	Book book("harry potter", "Jk", 15.67, 01);
-	//bookRepo.addBook(book);
-
-	bookRepo.updateBook("harry potter", book);
-	return 0;
-
-
-
-
-
-
-
-
 	//StockManager sM;
 	//UserManager uM;
 	//BookManager bM(&bookRepo);
